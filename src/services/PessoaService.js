@@ -7,6 +7,13 @@ class PessoaService extends Services {
         const model = db.Pessoa;
         super(model.modelName);
     }
+
+    async pegaMatriculasPorEstudante(id) {
+        const matriculas = await super.buscaPorId(id);
+        const listaMatriculas = await matriculas.getAulasMatriculadas();
+        return listaMatriculas;
+        
+    }
 }
 
 module.exports = PessoaService;
